@@ -1,26 +1,32 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <VApp>
+    <SideBar @select-option="onSelectOption" />
+    <VMain>
+      <ImageGallery :isWithColor="isWithColor" />
+    </VMain>
+  </VApp>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import SideBar from './components/SideBar.vue'
+import ImageGallery from './components/ImageGallery.vue';
 
 export default {
-  name: 'App',
   components: {
-    HelloWorld
-  }
+    SideBar,
+    ImageGallery
+  },
+   data() {
+    return{
+      isWithColor: true
+    }
+   },
+   methods:{
+    onSelectOption(isColor){
+      this.isWithColor = isColor
+      console.log(this.isWithColor)
+
+    }
+   }
 }
 </script>
-
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
